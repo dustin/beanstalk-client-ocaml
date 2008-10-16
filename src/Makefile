@@ -12,12 +12,16 @@ PARTS=extstring.cmx beanstalk.cmx
 all: libbeanstalk
 
 libbeanstalk: $(PARTS)
-	$(MKLIB) -o beanstalk beanstalk.cmo beanstalk.cmx
+	$(MKLIB) -o beanstalk \
+		extstring.cmo \
+		beanstalk.cmo \
+		extstring.cmx \
+		beanstalk.cmx
 	rm -f libbeanstalk.a
 	ln beanstalk.a libbeanstalk.a
 
 clean:
-	rm $(PARTS) beanstalk.cmxa beanstalk.cma *.cmi *.cmx *.a *.o *.cmo a.*
+	rm $(PARTS) *.cmxa *.cma *.cmi *.cmx *.a *.o *.cmo a.*
 
 docs: $(PARTS)
 	mkdir -p doc
