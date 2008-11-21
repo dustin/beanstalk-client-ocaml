@@ -46,6 +46,9 @@ let main () =
 	let job3 = Beanstalk.reserve_with_timeout bs 0 in
 	Printf.printf "Got job %d:  %s\n%!" job3.job_id job3.job_data;
 
+	Beanstalk.touch bs job2.job_id;
+	Printf.printf "Touched job %d\n%!" job2.job_id;
+
 	Beanstalk.delete bs job2.job_id;
 	Printf.printf "Deleted job %d\n%!" job2.job_id;
 
