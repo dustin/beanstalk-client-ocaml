@@ -138,6 +138,11 @@ val reserve_with_timeout : beanstalk_conn -> int -> beanstalk_job
 val delete : beanstalk_conn -> int -> unit
 
 (**
+  Touch a reserved job (extend the ttr).
+*)
+val touch : beanstalk_conn -> int -> unit
+
+(**
   Release a reserved job (to be executed later).
 
   @param id the job ID

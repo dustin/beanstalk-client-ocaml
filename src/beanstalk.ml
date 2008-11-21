@@ -116,6 +116,8 @@ let reserve_with_timeout bs timeout =
 
 let delete bs id = simple_cmd bs ("delete " ^ (string_of_int id)) "DELETED"
 
+let touch bs id = simple_cmd bs ("touch " ^ (string_of_int id)) "TOUCHED"
+
 let release bs id priority delay =
 	simple_cmd bs (Printf.sprintf "release %d %d %d" id priority delay)
 		"RELEASED"
